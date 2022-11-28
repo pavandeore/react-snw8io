@@ -2,11 +2,7 @@ import React, { useRef, useState } from 'react';
 import './style.css';
 
 export default function App() {
-  const [name, setName] = useState([]);
-
-  useEffect(() => {
-    setName([{ fname: 'john', lname: 'doe' }]);
-  }, []);
+  const [name, setName] = useState(null);
 
   return (
     <div>
@@ -14,17 +10,17 @@ export default function App() {
       <input
         type="text"
         placeholder="firstname"
-        value={fname}
-        onChange={(e) => setFname(e.target.value)}
+        value={name.fname}
+        onChange={(e) => setName({ fname: e.target.value })}
       />
       <input
         type="text"
         placeholder="lastname"
-        value={lname}
-        onChange={(e) => setLname(e.target.value)}
+        value={name.lname}
+        onChange={(e) => setName({ lname: e.target.value })}
       />
       <br />
-      {fname} - {lname}
+      {name.fname} - {name.lname}
     </div>
   );
 }
